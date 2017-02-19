@@ -4,7 +4,7 @@ public class Savings extends Account {
 	private static final long serialVersionUID = 111L;
 	private int numWithdraws = 0;
 	private float depositFee = 0.50F;
-  private float withdrawFee = 1.0F;
+	private float withdrawFee = 1.0F;
 	private int withdrawLimit = 3;
 
 	public Savings(String name) {
@@ -46,7 +46,7 @@ public class Savings extends Account {
 		}
 		return false;
 	}
-	public String getType() { return "Checking"; }
+	public String getType() { return "Savings"; }
 
 	public String toString() {
 		return "Savings: " + getName() + ": " + getBalance();
