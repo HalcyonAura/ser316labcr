@@ -30,7 +30,7 @@ class MainFrame extends JFrame {
 /**
   Method: MainFrame
   Inputs: String propertyFile
-  Returns: void
+  Returns: 
 
   Description: Constructor for MainFrame which initializes the AccountServerFactory and pulls saved accounts from a file
 */
@@ -55,8 +55,8 @@ class MainFrame extends JFrame {
 
 /**
   Method: constructForm
-  Inputs: void
-  Returns: void
+  Inputs: 
+  Returns: 
 
   Description: Creates the components of the JPanels for the UI.
 */
@@ -124,7 +124,7 @@ class MainFrame extends JFrame {
 		/**
   		Method: actionPerformed
   		Inputs: ActionEvent e
-  		Returns: void
+  		Returns: 
 
   		Description: Connects button events to in-class actions
 		*/
@@ -151,7 +151,7 @@ class MainFrame extends JFrame {
 		/**
 		  Method: actionPerformed
 		  Inputs: ActionEvent e
-		  Returns: void
+		  Returns: 
 		
 		  Description: Connects button events to in-class actions
 		*/
@@ -173,7 +173,7 @@ class MainFrame extends JFrame {
 		/**
  		Method: actionPerformed
   		Inputs: ActionEvent e
-  		Returns: void
+  		Returns: 
 
 		Description: Connects button events to in-class actions
 		*/
@@ -192,7 +192,7 @@ class MainFrame extends JFrame {
 		/**
  		Method: actionPerformed
   		Inputs: ActionEvent e
-  		Returns: void
+  		Returns: 
 
 		Description: Connects button events to in-class actions
 		*/
@@ -212,7 +212,7 @@ class MainFrame extends JFrame {
 		/**
  		Method: actionPerformed
   		Inputs: ActionEvent e
-  		Returns: void
+  		Returns: 
 
 		Description: Connects button events to in-class actions
 		*/
@@ -234,7 +234,7 @@ class MainFrame extends JFrame {
 		/**
  		Method: windowClosing
   		Inputs: windowEvent e
-  		Returns: void
+  		Returns: 
 
 		Description: Connects window closing event to closing window.
 		*/
