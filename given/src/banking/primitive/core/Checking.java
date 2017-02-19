@@ -13,7 +13,7 @@ public class Checking extends Account {
 	/**
 	  Method: Checking
 	  Inputs: String name
-	  Returns: void
+	  Returns: 
 
 	  Description: Constructor creates new Checking account when called
 	*/
@@ -24,7 +24,7 @@ public class Checking extends Account {
 	/**
 	  Method: Checking
 	  Inputs: String name, float balance
-	  Returns: void
+	  Returns: 
 
 	  Description: Returns instantiated Checking account when called
 	*/
@@ -78,7 +78,7 @@ public class Checking extends Account {
 
 	/**
 	  Method: getType
-	  Inputs: void
+	  Inputs: 
 	  Returns: String
 
 	  Description: Returns account type Checking
@@ -87,7 +87,7 @@ public class Checking extends Account {
 
 	/**
 	  Method: toString
-	  Inputs: void
+	  Inputs: 
 	  Returns: String 
 
 	  Description: Returns a string representation of the Checking account with the name and balance
