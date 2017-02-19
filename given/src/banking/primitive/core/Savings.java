@@ -47,7 +47,7 @@ public class Savings extends Account {
 			if (numWithdraws > withdrawLimit)
 				balance = balance - withdrawFee;
 			// KG BVA: should be < 0
-			if (balance <= 0.0f) {
+			if (balance < 0.0f) {
 				setState(State.OVERDRAWN);
 			}
 			return true;
