@@ -2,21 +2,17 @@ package banking.primitive.core;
 
 /**
   Class:	Checking
-  
+
   Description: Holds information about checking type Account and ways to change information in it
 */
 public class Checking extends Account {
 
 	private static final long serialVersionUID = 11L;
 	private int numWithdraws = 0;
-	
-	private Checking(String name) {
+
+	public Checking(String name) {
 		super(name);
 	}
-
-    public static Checking createChecking(String name) {
-        return new Checking(name);
-    }
 
 	public Checking(String name, float balance) {
 		super(name, balance);
@@ -38,11 +34,11 @@ public class Checking extends Account {
 	}
 
 	/**
-	 * Withdrawal. After 10 withdrawals a fee of $2 is charged per transaction You may 
+	 * Withdrawal. After 10 withdrawals a fee of $2 is charged per transaction You may
 	 * continue to withdraw an overdrawn account until the balance is below -$100
 	 */
 	public boolean withdraw(float amount) {
-		if (amount > 0.0f) {		
+		if (amount > 0.0f) {
 			// KG: incorrect, last balance check should be >=
 			if (getState() == State.OPEN || (getState() == State.OVERDRAWN && balance >= -100.0f)) {
 				balance = balance - amount;
@@ -59,7 +55,7 @@ public class Checking extends Account {
 	}
 
 	public String getType() { return "Checking"; }
-	
+
 	public String toString() {
 		return "Checking: " + getName() + ": " + getBalance();
 	}
