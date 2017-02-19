@@ -1,4 +1,11 @@
-package banking.primitive.core;
+/*
+  File:	AccountServerFactory.java
+  Author:	Paul Horton and Cecilia La Place
+  Date:	2/20/17
+  
+  Description: This holds the AccountServerFactory class
+*/
+  package banking.primitive.core;
 
 
 public class AccountServerFactory {
