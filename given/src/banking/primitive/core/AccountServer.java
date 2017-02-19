@@ -41,7 +41,7 @@ public interface AccountServer {
 
 	/**
 	  Method: getAllAccounts
-	  Inputs: void
+	  Inputs: 
 	  Returns: List<Account>
 
 	  Description: Returns a list of all Accounts inside the server
@@ -50,7 +50,7 @@ public interface AccountServer {
 
 	/**
 	  Method: getActiveAccounts
-	  Inputs: void
+	  Inputs: 
 	  Returns: List<Account>
 
 	  Description: Returns a list of all active Accounts inside the server
@@ -59,8 +59,8 @@ public interface AccountServer {
 
 		/**
 	  Method: saveAccounts
-	  Inputs: void
-	  Returns: void or IOException
+	  Inputs: 
+	  Returns: IOException
 
 	  Description: Saves the state of the server
 	*/
