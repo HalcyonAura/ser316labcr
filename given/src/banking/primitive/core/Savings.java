@@ -1,3 +1,10 @@
+/*
+  File:	Savings.java
+  Author:	Paul Horton and Cecilia La Place
+  Date:	2/20/17
+  
+  Description:
+*/
 package banking.primitive.core;
 
 public class Savings extends Account {
