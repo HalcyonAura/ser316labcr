@@ -1,3 +1,10 @@
+/*
+  File: Account.java
+  Author:   Paul Horton and Cecilia LaPlace
+  Date: 2/20/17
+  
+  Description: This file keep provides generalized methods for the children of this class to use.
+*/
 package banking.primitive.core;
 
 public abstract class Account implements java.io.Serializable {
