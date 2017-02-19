@@ -3,7 +3,7 @@
   Author:	Paul Horton and Cecilia La Place
   Date:	2/20/17
   
-  Description:
+  Description: This file holds the savings account class.
 */
 package banking.primitive.core;
 
