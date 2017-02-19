@@ -1,5 +1,10 @@
 package banking.primitive.core;
 
+/**
+  Class:	Checking
+  
+  Description: Holds information about checking type Account and ways to change information in it
+*/
 public class Checking extends Account {
 
 	private static final long serialVersionUID = 11L;
