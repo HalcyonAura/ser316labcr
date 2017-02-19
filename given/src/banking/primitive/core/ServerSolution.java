@@ -21,8 +21,8 @@ class ServerSolution implements AccountServer {
 
 	/**
 	  Method: ServerSolution
-	  Inputs: void
-	  Returns: void
+	  Inputs: 
+	  Returns: 
 
 	  Description: Constructer to create ServerSolution and create existing accounts from a file
 	*/
@@ -131,7 +131,7 @@ class ServerSolution implements AccountServer {
 
 	/**
 	  Method: getAllAccounts
-	  Inputs: void
+	  Inputs: 
 	  Returns: List<Account>
 
 	  Description: Returns list of all accounts
@@ -142,7 +142,7 @@ class ServerSolution implements AccountServer {
 
 	/**
 	  Method: getActiveAccounts
-	  Inputs: void
+	  Inputs: 
 	  Returns: List<Account>
 
 	  Description: Returns list of all active accounts
@@ -160,8 +160,8 @@ class ServerSolution implements AccountServer {
 	
 	/**
 	  Method: saveAccounts
-	  Inputs: void
-	  Returns: void
+	  Inputs: 
+	  Returns: 
 
 	  Description: Saves all accounts to a file
 	*/
