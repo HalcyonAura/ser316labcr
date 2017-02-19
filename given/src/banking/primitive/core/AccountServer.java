@@ -3,6 +3,12 @@ package banking.primitive.core;
 import java.io.IOException;
 import java.util.List;
 
+
+/**
+  Class:	AccountServer
+  
+  Description: This is an interface file that is used by the ServerSolution class. 
+*/
 public interface AccountServer {
 
 	/** 
