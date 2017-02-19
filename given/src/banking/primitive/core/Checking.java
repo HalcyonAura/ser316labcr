@@ -10,18 +10,35 @@ public class Checking extends Account {
 	private static final long serialVersionUID = 11L;
 	private int numWithdraws = 0;
 
+	/**
+	  Method: Checking
+	  Inputs: String name
+	  Returns: void
+
+	  Description: Constructor creates new Checking account when called
+	*/
 	public Checking(String name) {
 		super(name);
 	}
 
+	/**
+	  Method: Checking
+	  Inputs: String name, float balance
+	  Returns: void
+
+	  Description: Returns instantiated Checking account when called
+	*/
 	public Checking(String name, float balance) {
 		super(name, balance);
 	}
 
 	/**
-	 * A deposit may be made unless the Checking account is closed
-	 * @param float is the deposit amount
-	 */
+	  Method: deposit
+	  Inputs: float amount
+	  Returns: boolean
+
+	  Description: Deposits money into non-closed Checking account, boolean return if it is successful or not
+	*/
 	public boolean deposit(float amount) {
 		if (getState() != State.CLOSED && amount > 0.0f) {
 			balance = balance + amount;
@@ -34,9 +51,14 @@ public class Checking extends Account {
 	}
 
 	/**
-	 * Withdrawal. After 10 withdrawals a fee of $2 is charged per transaction You may
-	 * continue to withdraw an overdrawn account until the balance is below -$100
-	 */
+	  Method: withdraw
+	  Inputs: float amount
+	  Returns: boolean
+
+	  Description: Withdraws money from Checking account, boolean return if it is successful or not
+	  More than 10 withdrawals incurs a 2$ fee per transaction
+	  Withdrawals occur until the balance is below -$100
+	*/
 	public boolean withdraw(float amount) {
 		if (amount > 0.0f) {
 			// KG: incorrect, last balance check should be >=
@@ -54,8 +76,22 @@ public class Checking extends Account {
 		return false;
 	}
 
+	/**
+	  Method: getType
+	  Inputs: void
+	  Returns: String
+
+	  Description: Returns account type Checking
+	*/
 	public String getType() { return "Checking"; }
 
+	/**
+	  Method: toString
+	  Inputs: void
+	  Returns: String 
+
+	  Description: Returns a string representation of the Checking account with the name and balance
+	*/
 	public String toString() {
 		return "Checking: " + getName() + ": " + getBalance();
 	}
