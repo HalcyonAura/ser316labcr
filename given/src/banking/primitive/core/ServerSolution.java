@@ -1,3 +1,10 @@
+/*
+  File:	ServerSolution.java
+  Author:	Paul Horton and Cecilia La Place
+  Date:	2/20/2017
+
+  Description: File for the ServerSolution class
+*/
 package banking.primitive.core;
 
 import java.util.ArrayList;
@@ -10,7 +17,7 @@ import banking.primitive.core.Account.State;
 
 /**
   Class:	AccountServer
-  
+
   Description: Backend control of all accounts (saving to a file, reading from a file, returning specific types of accounts, etc.).
 */
 class ServerSolution implements AccountServer {
@@ -21,8 +28,8 @@ class ServerSolution implements AccountServer {
 
 	/**
 	  Method: ServerSolution
-	  Inputs: 
-	  Returns: 
+	  Inputs:
+	  Returns:
 
 	  Description: Constructer to create ServerSolution and create existing accounts from a file
 	*/
@@ -56,7 +63,7 @@ class ServerSolution implements AccountServer {
 			}
 		}
 	}
-	
+
 	/**
 	  Method: newAccountFactory
 	  Inputs: String type, String name, float balance
@@ -66,9 +73,9 @@ class ServerSolution implements AccountServer {
 	*/
 	private boolean newAccountFactory(String type, String name, float balance)
 		throws IllegalArgumentException {
-		
+
 		if (accountMap.get(name) != null) return false;
-		
+
 		Account acc;
 		if ("Checking".equals(type)) {
 			acc = new Checking(name, balance);
@@ -94,14 +101,14 @@ class ServerSolution implements AccountServer {
 
 	  Description: Create new account but first make sure it is has valid fields
 	*/
-	public boolean newAccount(String type, String name, float balance) 
+	public boolean newAccount(String type, String name, float balance)
 		throws IllegalArgumentException {
-		
+
 		if (balance < 0.0f) throw new IllegalArgumentException("New account may not be started with a negative balance");
-		
+
 		return newAccountFactory(type, name, balance);
 	}
-	
+
 	/**
 	  Method: closeAccount
 	  Inputs: String name
@@ -131,7 +138,7 @@ class ServerSolution implements AccountServer {
 
 	/**
 	  Method: getAllAccounts
-	  Inputs: 
+	  Inputs:
 	  Returns: List<Account>
 
 	  Description: Returns list of all accounts
@@ -142,7 +149,7 @@ class ServerSolution implements AccountServer {
 
 	/**
 	  Method: getActiveAccounts
-	  Inputs: 
+	  Inputs:
 	  Returns: List<Account>
 
 	  Description: Returns list of all active accounts
@@ -157,16 +164,16 @@ class ServerSolution implements AccountServer {
 		}
 		return result;
 	}
-	
+
 	/**
 	  Method: saveAccounts
-	  Inputs: 
-	  Returns: 
+	  Inputs:
+	  Returns:
 
 	  Description: Saves all accounts to a file
 	*/
 	public void saveAccounts() throws IOException {
-		ObjectOutputStream out = null; 
+		ObjectOutputStream out = null;
 		try {
 			out = new ObjectOutputStream(new FileOutputStream(fileName));
 
