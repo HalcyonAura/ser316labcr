@@ -2,11 +2,16 @@
   File: Account.java
   Author:   Paul Horton and Cecilia LaPlace
   Date: 2/20/17
-  
+
   Description: This file keep provides generalized methods for the children of this class to use.
 */
 package banking.primitive.core;
 
+/**
+  Class:	Account
+
+  Description: abstract class for accounts (like savings and checking)
+*/
 public abstract class Account implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -24,7 +29,7 @@ public abstract class Account implements java.io.Serializable {
     }
 
     protected Account(String n, float b) {
-        this(n); 
+        this(n);
         balance = b;
     }
 
@@ -44,7 +49,7 @@ public abstract class Account implements java.io.Serializable {
 
     /**
      * Adds money to an account. May not be done if the account is CLOSED
-     * 
+     *
      * @param parameter
      *            amount is a deposit and must be > 0
      * @return true if the deposit was successful, false if not due to amount or
@@ -55,7 +60,7 @@ public abstract class Account implements java.io.Serializable {
     /**
      * Takes money out of an account. If the balance falls below 0 then the
      * account is moved to an OVERDRAWN state
-     * 
+     *
      * @param parameter
      *            amount is a withdrawal and must be > 0
      * @return true if the deposit was successful, false if not due to amount or
