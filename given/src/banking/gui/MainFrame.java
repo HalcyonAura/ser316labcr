@@ -17,7 +17,11 @@ import java.awt.FlowLayout;
 import java.awt.Container;
 import java.awt.event.*;
 import javax.swing.*;
+/**
+  Class:	MainFrame
 
+  Description: Class to create the GUI for the banking program
+*/
 @SuppressWarnings("serial")
 class MainFrame extends JFrame {
 	AccountServer	myServer;
@@ -127,6 +131,11 @@ class MainFrame extends JFrame {
 		setSize(400, 250);
 	}
 
+	/**
+	  Class:	DisplayHandler
+
+	  Description:Implements button presses to view account
+	*/
 	class DisplayHandler implements ActionListener {
 		/**
   		Method: actionPerformed
@@ -153,7 +162,12 @@ class MainFrame extends JFrame {
 		}
 	}
 
-	// Complete a handler for new account button
+
+	/**
+	  Class:	NewAccountHandler
+
+	  Description: implements button pressed for new accounts
+	*/
 	class NewAccountHandler implements ActionListener {
 		/**
 		  Method: actionPerformed
@@ -175,7 +189,11 @@ class MainFrame extends JFrame {
 		}
 	}
 
-	// Complete a handler for new account button
+	/**
+	  Class:	SaveAccountsHandler
+
+	  Description: button class to save accounts
+	*/
 	class SaveAccountsHandler implements ActionListener {
 		/**
  		Method: actionPerformed
@@ -194,7 +212,12 @@ class MainFrame extends JFrame {
 		}
 	}
 
-	// Complete a handler for deposit button
+
+	/**
+	  Class:	DepositHandler
+
+	  Description: button class to deposit money
+	*/
 	class DepositHandler implements ActionListener {
 		/**
  		Method: actionPerformed
@@ -214,7 +237,12 @@ class MainFrame extends JFrame {
 			}
 		}
 	}
-	// Complete a handler for deposit button
+
+	/**
+	  Class:	WithdrawHandler
+
+	  Description: button class to withdraw money
+	*/
 	class WithdrawHandler implements ActionListener {
 		/**
  		Method: actionPerformed
