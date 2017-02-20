@@ -44,9 +44,9 @@ public class Checking extends Account {
 	  Description: Deposits money into non-closed Checking account, boolean return if it is successful or not
 	*/
 	public boolean deposit(float amount) {
-		if (getState() != STATE.CLOSED && amount > 0.0f) {
+		if (getState() != STATE.CLOSED && amount > _minBalance) {
 			_balance = _balance + amount;
-			if (_balance >= 0.0f) {
+			if (_balance >= _minBalance) {
 				setState(STATE.OPEN);
 			}
 			return true;
@@ -85,15 +85,15 @@ public class Checking extends Account {
 	  Withdrawals occur until the balance is below -$100
 	*/
 	public boolean withdraw(float amount) {
-		if (amount > 0.0f) {
+		if (amount > _minBalance) {
 			// KG: incorrect, last balance check should be >=
-			if (getState() == STATE.OPEN || (getState() == STATE.OVERDRAWN && _balance >= -100.0f)) {
+			if (getState() == STATE.OPEN || (getState() == STATE.OVERDRAWN && _balance >= _minOverdraw)) {
 				_balance = _balance - amount;
 				_numWithdraws++;
-				if (_numWithdraws > 10){
-					_balance = _balance - 2.0f;
+				if (_numWithdraws > _withdrawLimit){
+					_balance = _balance - _withdrawFee;
 				}
-				if (_balance < 0.0f) {
+				if (_balance < _minOverdraw) {
 					setState(STATE.OVERDRAWN);
 				}
 				return true;
@@ -103,5 +103,9 @@ public class Checking extends Account {
 	}
 	
 	private int _numWithdraws = 0;
+	private float _minBalance = 0.0f;
+	private float _minOverdraw = -100.0f;
+	private float _withdrawFee = 2.0f;
+	private float _withdrawLimit = 10;
 	private static final long serialVersionUID = 11L;
 }
