@@ -13,15 +13,63 @@ package banking.primitive.core;
   Description: abstract class for accounts (like savings and checking)
 */
 public abstract class Account implements java.io.Serializable {
-    private static final long serialVersionUID = 1L;
+	/**
+	    Method: deposit
+	    Inputs: float amount
+	    Returns: boolean
+	
+	    Description: Abstract deposit method to add money to an account
+	  */
+	  public abstract boolean deposit(float amount);
+	  /**
+	  Method: getBalance
+	  Inputs:
+	  Returns: float
+	
+	  Description: returns the balance of the account
+	  */
+	public final float getBalance() {
+	      return balance;
+	}
+	/**
+	Method: getName
+	Inputs:
+	Returns: String
+	
+	Description: returns the name of the account
+		*/
+	public final String getName() {
+	    return name;
+	}
+    /**
+    Method: getType
+    Inputs:
+    Returns: String
 
-    protected enum STATE {
-        OPEN, CLOSED, OVERDRAWN
-    };
+    Description: abstract method to return the type of account
+  */
+  public abstract String getType();
+	/**
+	    Method: toString
+	    Inputs:
+	    Returns: String
+	
+	    Description: returns the account in string format.
+	  */
+	  public String toString() {
+	      return "Account " + name + " has $" + balance + "and is " + getState()
+	  + "\n";
+	  }
+	  /**
+	  Method: withdraw
+	  Inputs: float amount
+	  Returns:
+	
+	  Description: Abstract withdraw method to remove money from an account
+	*/
+	  public abstract boolean withdraw(float amount);
 
-    protected float balance = 0.0F;
-    protected String name;
-    private STATE state;
+
     /**
       Method:Account
       Inputs:String n
@@ -46,55 +94,6 @@ public abstract class Account implements java.io.Serializable {
     }
 
     /**
-      Method: getName1
-      Inputs:
-      Returns: String
-
-      Description: returns the name of the account
-    */
-    public final String getName() {
-        return name;
-    }
-
-    /**
-      Method: getBalance
-      Inputs:
-      Returns: float
-
-      Description: returns the balance of the account
-    */
-    public final float getBalance() {
-        return balance;
-    }
-
-    /**
-      Method: deposit
-      Inputs: float amount
-      Returns: boolean
-
-      Description: Abstract deposit method to add money to an account
-    */
-    public abstract boolean deposit(float amount);
-
-    /**
-      Method: withdraw
-      Inputs: float amount
-      Returns:
-
-      Description: Abstract withdraw method to remove money from an account
-    */
-    public abstract boolean withdraw(float amount);
-
-    /**
-      Method: getType
-      Inputs:
-      Returns: String
-
-      Description: abstract method to return the type of account
-    */
-    public abstract String getType();
-
-    /**
       Method: getState
       Inputs:
       Returns: state
@@ -115,15 +114,14 @@ public abstract class Account implements java.io.Serializable {
     protected final void setState(STATE s) {
         state = s;
     }
-    /**
-      Method: toString
-      Inputs:
-      Returns: String
+    
+    protected enum STATE {
+        OPEN, CLOSED, OVERDRAWN
+    };
 
-      Description: returns the account in string format.
-    */
-    public String toString() {
-        return "Account " + name + " has $" + balance + "and is " + getState()
-                + "\n";
-    }
+    private STATE state;
+    protected float balance = 0.0F;
+    protected String name;
+    
+    private static final long serialVersionUID = 1L;
 }
