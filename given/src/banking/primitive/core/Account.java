@@ -2,7 +2,7 @@
   File: Account.java
   Author:   Paul Horton and Cecilia LaPlace
   Date: 2/20/17
-  
+
   Description: This file keep provides generalized methods for the children of this class to use.
 */
 package banking.primitive.core;
@@ -10,21 +10,21 @@ package banking.primitive.core;
 public abstract class Account implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
 
-    protected enum State {
+    protected enum STATE {
         OPEN, CLOSED, OVERDRAWN
     };
 
     protected float balance = 0.0F;
     protected String name;
-    private State state;
+    private STATE state;
 
     protected Account(String n) {
         name = n;
-        state = State.OPEN;
+        state = STATE.OPEN;
     }
 
     protected Account(String n, float b) {
-        this(n); 
+        this(n);
         balance = b;
     }
 
@@ -44,7 +44,7 @@ public abstract class Account implements java.io.Serializable {
 
     /**
      * Adds money to an account. May not be done if the account is CLOSED
-     * 
+     *
      * @param parameter
      *            amount is a deposit and must be > 0
      * @return true if the deposit was successful, false if not due to amount or
@@ -55,7 +55,7 @@ public abstract class Account implements java.io.Serializable {
     /**
      * Takes money out of an account. If the balance falls below 0 then the
      * account is moved to an OVERDRAWN state
-     * 
+     *
      * @param parameter
      *            amount is a withdrawal and must be > 0
      * @return true if the deposit was successful, false if not due to amount or
@@ -68,11 +68,11 @@ public abstract class Account implements java.io.Serializable {
      */
     public abstract String getType();
 
-    protected final State getState() {
+    protected final STATE getState() {
         return state;
     }
 
-    protected final void setState(State s) {
+    protected final void setState(STATE s) {
         state = s;
     }
 
