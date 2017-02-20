@@ -2,12 +2,17 @@
   File:	AccountServerFactory.java
   Author:	Paul Horton and Cecilia La Place
   Date:	2/20/17
-  
+
   Description: This holds the AccountServerFactory class
 */
   package banking.primitive.core;
 
 
+	/**
+	  Class:	AccountServerFactory
+
+	  Description: Singleton class to organize server solutions.
+	*/
 public class AccountServerFactory {
 
 	protected static AccountServerFactory singleton = null;
