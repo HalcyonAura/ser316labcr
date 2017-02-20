@@ -11,43 +11,58 @@ import java.util.List;
 */
 public interface AccountServer {
 
-	/** 
-	 *  Create a new account object in the server. if an account already exists with the given name
+	/**
+	  Method: newAccount
+	  Inputs: String type, String name, float balance
+	  Returns: boolean or IllegalArgumentException
+
+	  Description: Create a new account object in the server. if an account already exists with the given name
 	 *  then a new account is not created and stored.
-	 *  
-		@param type must be one of Savings or Checking
-		@param name leading or trailing whitespace is removed
-		@param balance must be non-negative
-		@throws IllegalArgumentException if the account type is invalid or the balance is non-negative.
-		@return boolean true if the account was created and stored, false otherwise
 	*/
 	public boolean	newAccount(String type, String name, float balance) throws IllegalArgumentException;
 
-	/** Close an account 
-		@param name leading or trailing whitespace is removed
-	 * @return boolean true if there was an account with this name and close was successful
+	/**
+	  Method: closeAccount
+	  Inputs: String name
+	  Returns: boolean
+
+	  Description: Close an account
 	*/
 	public boolean	closeAccount(String name);
 
 	/**
-	 * @param name name of the account 
-	 * @return Account object or null if not found. 
-	 */
+	  Method: getAccount
+	  Inputs: String name
+	  Returns: Account
+
+	  Description: Returns specific account
+	*/
 	public Account	getAccount(String name);
 
-	/** 
-	 * @return a list of all Accounts inside the server 
-	 */
+	/**
+	  Method: getAllAccounts
+	  Inputs: 
+	  Returns: List<Account>
+
+	  Description: Returns a list of all Accounts inside the server
+	*/
 	public List<Account> getAllAccounts();
 
-	/** 
-	 * @return a list of Accounts inside the server that are not CLOSED
-	 */
+	/**
+	  Method: getActiveAccounts
+	  Inputs: 
+	  Returns: List<Account>
+
+	  Description: Returns a list of all active Accounts inside the server
+	*/
 	public List<Account> getActiveAccounts();
 
-	/** 
-	 * Saves the state of the server
-	 * @throws IOException if unable to save the state
-	 */
+		/**
+	  Method: saveAccounts
+	  Inputs: 
+	  Returns: IOException
+
+	  Description: Saves the state of the server
+	*/
 	public void	saveAccounts() throws IOException;
 }
