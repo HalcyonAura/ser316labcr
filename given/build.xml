@@ -1,16 +1,18 @@
-<project name="CST316Lab6" default="build" basedir=".">
+<project name="CST316Lab6" default="targets" basedir=".">
     <property name="src" value="src" />
 	<property name="build" value="build" />
 	<property name="jars" value="jars"/>
 	<property name="given" value="../lab6given.jar"/>
-
+  <target name="targets">
+      <echo message ="Targets are prepare, compile, build, clean, and given."/>
+  </target>
         <path id="compile.classpath">
-            <pathelement path="${build}/classes"/>  
+            <pathelement path="${build}/classes"/>
             <fileset dir="${jars}">
                <include name="**/*.jar"/>
-            </fileset>          
+            </fileset>
         </path>
-	
+
 	<target name="prepare">
 		<tstamp/>
 		<mkdir dir="${build}" />
