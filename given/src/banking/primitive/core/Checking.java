@@ -13,7 +13,7 @@ package banking.primitive.core;
   Description: Holds information about checking type Account and ways to change information in it
 */
 public class Checking extends Account {
-	private static final long serialVersionUID = 11L;
+	
 	/**
 	  Method: Checking
 	  Inputs: String name
@@ -45,13 +45,34 @@ public class Checking extends Account {
 	*/
 	public boolean deposit(float amount) {
 		if (getState() != STATE.CLOSED && amount > 0.0f) {
-			balance = balance + amount;
-			if (balance >= 0.0f) {
+			_balance = _balance + amount;
+			if (_balance >= 0.0f) {
 				setState(STATE.OPEN);
 			}
 			return true;
 		}
 		return false;
+	}
+	/**
+	  Method: getType
+	  Inputs:
+	  Returns: String
+
+	  Description: Returns account type Checking
+	*/
+	public String getType() { 
+		return "Checking"; 
+	}
+
+	/**
+	  Method: toString
+	  Inputs:
+	  Returns: String
+
+	  Description: Returns a string representation of the Checking account with the name and balance
+	*/
+	public String toString() {
+		return "Checking: " + getName() + ": " + getBalance();
 	}
 
 	/**
@@ -66,12 +87,13 @@ public class Checking extends Account {
 	public boolean withdraw(float amount) {
 		if (amount > 0.0f) {
 			// KG: incorrect, last balance check should be >=
-			if (getState() == STATE.OPEN || (getState() == STATE.OVERDRAWN && balance >= -100.0f)) {
-				balance = balance - amount;
-				numWithdraws++;
-				if (numWithdraws > 10)
-					balance = balance - 2.0f;
-				if (balance < 0.0f) {
+			if (getState() == STATE.OPEN || (getState() == STATE.OVERDRAWN && _balance >= -100.0f)) {
+				_balance = _balance - amount;
+				_numWithdraws++;
+				if (_numWithdraws > 10){
+					_balance = _balance - 2.0f;
+				}
+				if (_balance < 0.0f) {
 					setState(STATE.OVERDRAWN);
 				}
 				return true;
@@ -79,25 +101,7 @@ public class Checking extends Account {
 		}
 		return false;
 	}
-
-	/**
-	  Method: getType
-	  Inputs:
-	  Returns: String
-
-	  Description: Returns account type Checking
-	*/
-	public String getType() { return "Checking"; }
-
-	/**
-	  Method: toString
-	  Inputs:
-	  Returns: String
-
-	  Description: Returns a string representation of the Checking account with the name and balance
-	*/
-	public String toString() {
-		return "Checking: " + getName() + ": " + getBalance();
-	}
-	private int numWithdraws = 0;
+	
+	private int _numWithdraws = 0;
+	private static final long serialVersionUID = 11L;
 }
