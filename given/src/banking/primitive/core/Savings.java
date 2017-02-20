@@ -9,10 +9,10 @@ package banking.primitive.core;
 
 public class Savings extends Account {
 	private static final long serialVersionUID = 111L;
-	private int numWithdraws = 0;
-	private float depositFee = 0.50F;
-	private float withdrawFee = 1.0F;
-	private int withdrawLimit = 3;
+	private int _numWithdraws = 0;
+	private float _depositFee = 0.50F;
+	private float _withdrawFee = 1.0F;
+	private int _withdrawLimit = 3;
 
 	public Savings(String name) {
 		super(name);
@@ -26,10 +26,10 @@ public class Savings extends Account {
 	 * A deposit comes with a fee of 50 cents per deposit
 	 */
 	public boolean deposit(float amount) {
-		if (getState() != State.CLOSED && amount > 0.0f) {
-			balance = balance + amount - depositFee;
+		if (getState() != STATE.CLOSED && amount > 0.0f) {
+			balance = balance + amount - _depositFee;
 			if (balance >= 0.0f) {
-				setState(State.OPEN);
+				setState(STATE.OPEN);
 			}
 			return true;
 		}
@@ -41,20 +41,22 @@ public class Savings extends Account {
 	 * An account whose balance dips below 0 is in an OVERDRAWN state
 	 */
 	public boolean withdraw(float amount) {
-		if (getState() == State.OPEN && amount > 0.0f) {
+		if (getState() == STATE.OPEN && amount > 0.0f) {
 			balance = balance - amount;
-			numWithdraws++;
-			if (numWithdraws > withdrawLimit)
-				balance = balance - withdrawFee;
+			_numWithdraws++;
+			if (_numWithdraws > _withdrawLimit)
+				balance = balance - _withdrawFee;
 			// KG BVA: should be < 0
 			if (balance < 0.0f) {
-				setState(State.OVERDRAWN);
+				setState(STATE.OVERDRAWN);
 			}
 			return true;
 		}
 		return false;
 	}
-	public String getType() { return "Savings"; }
+	public String getType() {
+		return "Savings";
+	}
 
 	public String toString() {
 		return "Savings: " + getName() + ": " + getBalance();
