@@ -16,9 +16,7 @@ import banking.primitive.core.Account.State;
 class ServerSolution implements AccountServer {
 
 	private static String _fileName = "accounts.ser";
-
 	private Map<String,Account> _accoumtMap = null;
-
 	/**
 	  Method: ServerSolution
 	  Inputs:
@@ -43,20 +41,22 @@ class ServerSolution implements AccountServer {
 						_accoumtMap.put(acc.getName(), acc);
 				}
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-		} finally {
+		}
+		finally {
 			if (in != null) {
 				try {
 					in.close();
-				} catch (Throwable t) {
+				}
+				catch (Throwable t) {
 					t.printStackTrace();
 				}
 			}
 		}
 	}
-
 	/**
 	  Method: _newAccountFactory
 	  Inputs: String type, String name, float balance
@@ -96,10 +96,10 @@ class ServerSolution implements AccountServer {
 	*/
 	public boolean newAccount(String type, String name, float balance)
 		throws IllegalArgumentException {
-
-		if (balance < 0.0f) throw new IllegalArgumentException("New account may not be started with a negative balance");
-
-		return _newAccountFactory(type, name, balance);
+		if (balance < 0.0f) {
+			throw new IllegalArgumentException("New account may not be started with a negative balance");
+		}
+		return newAccountFactory(type, name, balance);
 	}
 
 	/**
@@ -114,7 +114,7 @@ class ServerSolution implements AccountServer {
 		if (acc == null) {
 			return false;
 		}
-		acc.setState(State.CLOSED);
+		acc.setState(STATECLOSED);
 		return true;
 	}
 
@@ -149,9 +149,8 @@ class ServerSolution implements AccountServer {
 	*/
 	public List<Account> getActiveAccounts() {
 		List<Account> result = new ArrayList<Account>();
-
-		for (Account acc : _accoumtMap.values()) {
-			if (acc.getState() != State.CLOSED) {
+		for (Account acc : accountMap.values()) {
+			if (acc.getState() != STATE.CLOSED) {
 				result.add(acc);
 			}
 		}
@@ -174,18 +173,53 @@ class ServerSolution implements AccountServer {
 			for (String accName : _accoumtMap.keySet()) {
 				out.writeObject(_accoumtMap.get(accName));
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
-			throw new IOException("Could not write file:" + _fileName);
-		} finally {
+			throw new IOException("Could not write file:" + fileName);
+		}
+		finally {
 			if (out != null) {
 				try {
 					out.close();
-				} catch (Throwable t) {
+				}
+				catch (Throwable t) {
 					t.printStackTrace();
 				}
 			}
 		}
 	}
 
+	/**
+	  Method: newAccountFactory
+	  Inputs: String type, String name, float balance
+	  Returns: boolean
+
+	  Description: Create new account if one of the same name does not exist
+	*/
+	private boolean newAccountFactory(String type, String name, float balance)
+		throws IllegalArgumentException {
+
+		if (accountMap.get(name) != null) return false;
+
+		Account acc;
+		if ("Checking".equals(type)) {
+			acc = new Checking(name, balance);
+
+		} else if ("Savings".equals(type)) {
+			acc = new Savings(name, balance);
+
+		} else {
+			throw new IllegalArgumentException("Bad account type:" + type);
+		}
+		try {
+			accountMap.put(acc.getName(), acc);
+		} catch (Exception exc) {
+			return false;
+		}
+		return true;
+	}
+	static String fileName = "accounts.ser";
+
+	Map<String,Account> accountMap = null;
 }
