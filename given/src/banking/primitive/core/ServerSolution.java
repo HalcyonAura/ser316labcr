@@ -39,14 +39,17 @@ class ServerSolution implements AccountServer {
 						accountMap.put(acc.getName(), acc);
 				}
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-		} finally {
+		}
+		finally {
 			if (in != null) {
 				try {
 					in.close();
-				} catch (Throwable t) {
+				}
+				catch (Throwable t) {
 					t.printStackTrace();
 				}
 			}
@@ -62,9 +65,9 @@ class ServerSolution implements AccountServer {
 	*/
 	public boolean newAccount(String type, String name, float balance)
 		throws IllegalArgumentException {
-
-		if (balance < 0.0f) throw new IllegalArgumentException("New account may not be started with a negative balance");
-
+		if (balance < 0.0f) {
+			throw new IllegalArgumentException("New account may not be started with a negative balance");
+		}
 		return newAccountFactory(type, name, balance);
 	}
 
@@ -80,7 +83,7 @@ class ServerSolution implements AccountServer {
 		if (acc == null) {
 			return false;
 		}
-		acc.setState(State.CLOSED);
+		acc.setState(STATECLOSED);
 		return true;
 	}
 
@@ -117,7 +120,7 @@ class ServerSolution implements AccountServer {
 		List<Account> result = new ArrayList<Account>();
 
 		for (Account acc : accountMap.values()) {
-			if (acc.getState() != State.CLOSED) {
+			if (acc.getState() != STATECLOSED) {
 				result.add(acc);
 			}
 		}
@@ -140,19 +143,23 @@ class ServerSolution implements AccountServer {
 			for (String accName : accountMap.keySet()) {
 				out.writeObject(accountMap.get(accName));
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			throw new IOException("Could not write file:" + fileName);
-		} finally {
+		}
+		finally {
 			if (out != null) {
 				try {
 					out.close();
-				} catch (Throwable t) {
+				}
+				catch (Throwable t) {
 					t.printStackTrace();
 				}
 			}
 		}
 	}
+
 	/**
 	  Method: newAccountFactory
 	  Inputs: String type, String name, float balance
