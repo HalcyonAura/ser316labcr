@@ -10,13 +10,12 @@
 
 public class AccountServerFactory {
 
-	protected static AccountServerFactory singleton = null;
+	protected static AccountServerFactory _singleton = null;
 
 	/**
 	  Method:AccountServerFactory
 	  Inputs:
 	  Returns:
-
 	  Description:constructor for singleton class
 	*/
 	protected AccountServerFactory() {
@@ -30,11 +29,11 @@ public class AccountServerFactory {
 	  Description: singleton factory for accountserver
 	*/
 	public static AccountServerFactory getMe() {
-		if (singleton == null) {
-			singleton = new AccountServerFactory();
+		if (_singleton == null) {
+			_singleton = new _AccountServerFactory();
 		}
 
-		return singleton;
+		return _singleton;
 	}
 
 	/**
