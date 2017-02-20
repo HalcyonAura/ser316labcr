@@ -1,3 +1,10 @@
+/*
+  File:	MainFrame.java
+  Author:	Paul Horton and Cecilia La Place
+  Date:	2/20/2017
+
+  Description: The GUI for the banking program
+*/
 package banking.gui;
 
 import banking.primitive.core.Account;
@@ -181,7 +188,6 @@ class MainFrame extends JFrame {
 			}
 		}
 	}
-
 
 	/**
 	  Class:	SaveAccountsHandler
