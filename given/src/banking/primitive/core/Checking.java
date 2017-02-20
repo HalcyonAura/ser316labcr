@@ -1,3 +1,10 @@
+/*
+  File:	Checking.java
+  Author:	Paul Horton and Cecilia La Place
+  Date:	2/20/2017
+
+  Description: File for the checking class
+*/
 package banking.primitive.core;
 
 /**
