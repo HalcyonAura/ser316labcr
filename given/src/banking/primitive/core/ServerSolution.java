@@ -153,9 +153,6 @@ class ServerSolution implements AccountServer {
 			}
 		}
 	}
-	static String fileName = "accounts.ser";
-
-	Map<String,Account> accountMap = null;
 	/**
 	  Method: newAccountFactory
 	  Inputs: String type, String name, float balance
@@ -185,4 +182,7 @@ class ServerSolution implements AccountServer {
 		}
 		return true;
 	}
+	static String fileName = "accounts.ser";
+
+	Map<String,Account> accountMap = null;
 }
