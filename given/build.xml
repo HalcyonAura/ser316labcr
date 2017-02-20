@@ -45,4 +45,19 @@
 		<jar jarfile="${given}"  basedir="t" />
 		<delete dir="t" />
 	</target>
+
+	<target name="jar" depends="build">
+		<mkdir dir="${build}/jar"/>
+		<jar destfile="./lab6.jar" basedir="${build}/classes">
+			<manifest>
+				<attribute name="Main-Class" value="banking.gui.Main"/>
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="execute" depends="jar">
+		<java jar="./lab6.jar" fork="true">
+			<arg line="my.properties"/>
+		</java>
+	</target>
 </project>

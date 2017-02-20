@@ -14,17 +14,7 @@ import javax.swing.JFrame;
 
   Description: Runs program.
 */
-final class Main {
-	/**
-	  Method: Main
-	  Inputs:
-	  Returns:
-
-	  Description: constructor for style issues
-	*/
-	private Main() {
-	}
-
+public final class Main {
 	/**
 	  Method: Main
 	  Inputs: String[] args
@@ -42,6 +32,15 @@ final class Main {
 		String propertyFile = args[0];
 		JFrame frame = new MainFrame(propertyFile);
 		frame.setVisible(true);
-
 	}
+	/**
+	  Method: Main
+	  Inputs:
+	  Returns:
+
+	  Description: constructor for style issues
+	*/
+	private Main() {
+	}
+
 }
