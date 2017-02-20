@@ -1,3 +1,10 @@
+/*
+  File:	Checking.java
+  Author:	Paul Horton and Cecilia La Place
+  Date:	2/20/2017
+
+  Description: File for the checking class
+*/
 package banking.primitive.core;
 
 /**
@@ -13,7 +20,7 @@ public class Checking extends Account {
 	/**
 	  Method: Checking
 	  Inputs: String name
-	  Returns: 
+	  Returns:
 
 	  Description: Constructor creates new Checking account when called
 	*/
@@ -24,7 +31,7 @@ public class Checking extends Account {
 	/**
 	  Method: Checking
 	  Inputs: String name, float balance
-	  Returns: 
+	  Returns:
 
 	  Description: Returns instantiated Checking account when called
 	*/
@@ -78,7 +85,7 @@ public class Checking extends Account {
 
 	/**
 	  Method: getType
-	  Inputs: 
+	  Inputs:
 	  Returns: String
 
 	  Description: Returns account type Checking
@@ -87,8 +94,8 @@ public class Checking extends Account {
 
 	/**
 	  Method: toString
-	  Inputs: 
-	  Returns: String 
+	  Inputs:
+	  Returns: String
 
 	  Description: Returns a string representation of the Checking account with the name and balance
 	*/
