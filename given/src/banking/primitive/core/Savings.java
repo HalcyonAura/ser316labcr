@@ -6,18 +6,22 @@
   Description: This file holds the savings account class.
 */
 package banking.primitive.core;
+/**
+  Class:	Savings
 
+  Description: Class to organize the values pertaining to savings accounts
+*/
 public class Savings extends Account {
 	private static final long serialVersionUID = 111L;
-	private int numWithdraws = 0;
-	private float depositFee = 0.50F;
-	private float withdrawFee = 1.0F;
-	private int withdrawLimit = 3;
+
+	private int _numWithdraws = 0;
+	private float _depositFee = 0.50F;
+	private float _withdrawFee = 1.0F;
+	private int _withdrawLimit = 3;
 	/**
  		Method: Savings
 		Inputs: String name
  		Returns:
-
 		Description: Constructor for savings
 	*/
 	public Savings(String name) {
@@ -43,7 +47,7 @@ public class Savings extends Account {
 	*/
 	public boolean deposit(float amount) {
 		if (getState() != STATE.CLOSED && amount > 0.0f) {
-			balance = balance + amount - depositFee;
+			balance = balance + amount - _depositFee;
 			if (balance >= 0.0f) {
 				setState(STATE.OPEN);
 			}
@@ -64,9 +68,9 @@ public class Savings extends Account {
 	public boolean withdraw(float amount) {
 		if (getState() == STATE.OPEN && amount > 0.0f) {
 			balance = balance - amount;
-			numWithdraws++;
-			if (numWithdraws > withdrawLimit)
-				balance = balance - withdrawFee;
+			_numWithdraws++;
+			if (_numWithdraws > _withdrawLimit)
+				balance = balance - _withdrawFee;
 			// KG BVA: should be < 0
 			if (balance < 0.0f) {
 				setState(STATE.OVERDRAWN);
@@ -75,19 +79,20 @@ public class Savings extends Account {
 		}
 		return false;
 	}
+
 	/**
 		Method: getType
 		Inputs:
 		Returns: String
-
 		Description: Returns the type of account this is
 	*/
-	public String getType() { return "Savings"; }
+	public String getType() {
+		return "Savings";
+	}
 	/**
 		Method: toString
 		Inputs:
 		Returns: String
-
 		Description: Returns information about the account
 	*/
 	public String toString() {
