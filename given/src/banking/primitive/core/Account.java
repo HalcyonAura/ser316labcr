@@ -78,7 +78,7 @@ public abstract class Account implements java.io.Serializable {
     */
     protected Account(String n) {
         name = n;
-        state = STATE.OPEN;
+        _state = STATE.OPEN;
     }
 
     /**
@@ -101,7 +101,7 @@ public abstract class Account implements java.io.Serializable {
       Description: returns the state of the account
     */
     protected final STATE getState() {
-        return state;
+        return _state;
     }
 
    /**
@@ -112,16 +112,15 @@ public abstract class Account implements java.io.Serializable {
       Description: sets the state of the account
     */
     protected final void setState(STATE s) {
-        state = s;
+        _state = s;
     }
     
     protected enum STATE {
         OPEN, CLOSED, OVERDRAWN
     };
 
-    private STATE state;
     protected float balance = 0.0F;
     protected String name;
-    
+    private STATE _state;    
     private static final long serialVersionUID = 1L;
 }
