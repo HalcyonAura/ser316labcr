@@ -46,9 +46,10 @@ public class Savings extends Account {
 		All deposits have a depositFee taken from them.
 	*/
 	public boolean deposit(float amount) {
+
 		if (getState() != STATE.CLOSED && amount > 0.0f) {
-			balance = balance + amount - _depositFee;
-			if (balance >= 0.0f) {
+			_balance = _balance + amount - _depositFee;
+			if (_balance >= 0.0f) {
 				setState(STATE.OPEN);
 			}
 			return true;
@@ -66,14 +67,19 @@ public class Savings extends Account {
 		below 0, the account enters an overdrawn state.
 	*/
 	public boolean withdraw(float amount) {
+
 		if (getState() == STATE.OPEN && amount > 0.0f) {
-			balance = balance - amount;
+			_balance = _balance - amount;
+
+
 			_numWithdraws++;
 			if (_numWithdraws > _withdrawLimit)
-				balance = balance - _withdrawFee;
+				_balance = _balance - _withdrawFee;
 			// KG BVA: should be < 0
-			if (balance < 0.0f) {
+
+			if (_balance < 0.0f) {
 				setState(STATE.OVERDRAWN);
+
 			}
 			return true;
 		}
