@@ -15,10 +15,6 @@ import banking.primitive.core.Account.State;
 */
 class ServerSolution implements AccountServer {
 
-	static String fileName = "accounts.ser";
-
-	Map<String,Account> accountMap = null;
-
 	/**
 	  Method: ServerSolution
 	  Inputs:
@@ -58,39 +54,6 @@ class ServerSolution implements AccountServer {
 				}
 			}
 		}
-	}
-
-	/**
-	  Method: newAccountFactory
-	  Inputs: String type, String name, float balance
-	  Returns: boolean
-
-	  Description: Create new account if one of the same name does not exist
-	*/
-	private boolean newAccountFactory(String type, String name, float balance)
-		throws IllegalArgumentException {
-
-		if (accountMap.get(name) != null) return false;
-
-		Account acc;
-		if ("Checking".equals(type)) {
-			acc = new Checking(name, balance);
-
-		}
-		else if ("Savings".equals(type)) {
-			acc = new Savings(name, balance);
-
-		}
-		else {
-			throw new IllegalArgumentException("Bad account type:" + type);
-		}
-		try {
-			accountMap.put(acc.getName(), acc);
-		}
-		catch (Exception exc) {
-			return false;
-		}
-		return true;
 	}
 
 	/**
@@ -196,4 +159,37 @@ class ServerSolution implements AccountServer {
 			}
 		}
 	}
+
+	/**
+	  Method: newAccountFactory
+	  Inputs: String type, String name, float balance
+	  Returns: boolean
+
+	  Description: Create new account if one of the same name does not exist
+	*/
+	private boolean newAccountFactory(String type, String name, float balance)
+		throws IllegalArgumentException {
+
+		if (accountMap.get(name) != null) return false;
+
+		Account acc;
+		if ("Checking".equals(type)) {
+			acc = new Checking(name, balance);
+
+		} else if ("Savings".equals(type)) {
+			acc = new Savings(name, balance);
+
+		} else {
+			throw new IllegalArgumentException("Bad account type:" + type);
+		}
+		try {
+			accountMap.put(acc.getName(), acc);
+		} catch (Exception exc) {
+			return false;
+		}
+		return true;
+	}
+	static String fileName = "accounts.ser";
+
+	Map<String,Account> accountMap = null;
 }
