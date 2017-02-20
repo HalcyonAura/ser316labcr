@@ -102,7 +102,6 @@ class ServerSolution implements AccountServer {
 	*/
 	public boolean newAccount(String type, String name, float balance)
 		throws IllegalArgumentException {
-
 		if (balance < 0.0f) {
 			throw new IllegalArgumentException("New account may not be started with a negative balance");
 		}
@@ -121,7 +120,7 @@ class ServerSolution implements AccountServer {
 		if (acc == null) {
 			return false;
 		}
-		acc.setState(State.CLOSED);
+		acc.setState(STATECLOSED);
 		return true;
 	}
 
@@ -158,7 +157,7 @@ class ServerSolution implements AccountServer {
 		List<Account> result = new ArrayList<Account>();
 
 		for (Account acc : accountMap.values()) {
-			if (acc.getState() != State.CLOSED) {
+			if (acc.getState() != STATECLOSED) {
 				result.add(acc);
 			}
 		}
