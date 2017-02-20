@@ -6,7 +6,11 @@
   Description: This file holds the savings account class.
 */
 package banking.primitive.core;
+/**
+  Class:	Savings
 
+  Description: Class to organize the values pertaining to savings accounts
+*/
 public class Savings extends Account {
 	private static final long serialVersionUID = 111L;
 	private int numWithdraws = 0;
