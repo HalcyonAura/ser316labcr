@@ -1,3 +1,10 @@
+/*
+  File:	MainFrame.java
+  Author:	Paul Horton and Cecilia La Place
+  Date:	2/20/2017
+
+  Description: The GUI for the banking program
+*/
 package banking.gui;
 
 import banking.primitive.core.Account;
@@ -10,7 +17,11 @@ import java.awt.FlowLayout;
 import java.awt.Container;
 import java.awt.event.*;
 import javax.swing.*;
+/**
+  Class:	MainFrame
 
+  Description: Class to create the GUI for the banking program
+*/
 @SuppressWarnings("serial")
 class MainFrame extends JFrame {
 	AccountServer	myServer;
@@ -30,7 +41,7 @@ class MainFrame extends JFrame {
 /**
   Method: MainFrame
   Inputs: String propertyFile
-  Returns: 
+  Returns:
 
   Description: Constructor for MainFrame which initializes the AccountServerFactory and pulls saved accounts from a file
 */
@@ -41,7 +52,7 @@ class MainFrame extends JFrame {
 
 		props = new Properties();
 
-		FileInputStream fis = null; 
+		FileInputStream fis = null;
 		try {
 			fis =  new FileInputStream(propertyFile);
 			props.load(fis);
@@ -55,8 +66,8 @@ class MainFrame extends JFrame {
 
 /**
   Method: constructForm
-  Inputs: 
-  Returns: 
+  Inputs:
+  Returns:
 
   Description: Creates the components of the JPanels for the UI.
 */
@@ -84,28 +95,28 @@ class MainFrame extends JFrame {
 		displayAllAccountsButton.addActionListener(new DisplayHandler());
 		depositButton.addActionListener(new DepositHandler());
 		withdrawButton.addActionListener(new WithdrawHandler());
-		saveButton.addActionListener(new SaveAccountsHandler());		
-		
+		saveButton.addActionListener(new SaveAccountsHandler());
+
 		Container pane = getContentPane();
 		pane.setLayout(new FlowLayout());
-		
+
 		JPanel panel1 = new JPanel();
 		panel1.add(typeLabel);
 		panel1.add(typeOptions);
-		
+
 		JPanel panel2 = new JPanel();
 		panel2.add(displayAccountsButton);
 		panel2.add(displayAllAccountsButton);
 		panel2.add(saveButton);
-		
+
 		JPanel panel3 = new JPanel();
 		panel3.add(nameLabel);
 		panel3.add(nameField);
-		
+
 		JPanel panel4 = new JPanel();
 		panel4.add(balanceLabel);
 		panel4.add(balanceField);
-		
+
 		JPanel panel5 = new JPanel();
 		panel5.add(newAccountButton);
 		panel5.add(depositButton);
@@ -116,15 +127,20 @@ class MainFrame extends JFrame {
 		pane.add(panel3);
 		pane.add(panel4);
 		pane.add(panel5);
-		
+
 		setSize(400, 250);
 	}
 
+	/**
+	  Class:	DisplayHandler
+
+	  Description:Implements button presses to view account
+	*/
 	class DisplayHandler implements ActionListener {
 		/**
   		Method: actionPerformed
   		Inputs: ActionEvent e
-  		Returns: 
+  		Returns:
 
   		Description: Connects button events to in-class actions
 		*/
@@ -146,13 +162,18 @@ class MainFrame extends JFrame {
 		}
 	}
 
-	// Complete a handler for new account button
+
+	/**
+	  Class:	NewAccountHandler
+
+	  Description: implements button pressed for new accounts
+	*/
 	class NewAccountHandler implements ActionListener {
 		/**
 		  Method: actionPerformed
 		  Inputs: ActionEvent e
-		  Returns: 
-		
+		  Returns:
+
 		  Description: Connects button events to in-class actions
 		*/
 		public void actionPerformed(ActionEvent e) {
@@ -167,13 +188,17 @@ class MainFrame extends JFrame {
 			}
 		}
 	}
-	
-	// Complete a handler for new account button
+
+	/**
+	  Class:	SaveAccountsHandler
+
+	  Description: button class to save accounts
+	*/
 	class SaveAccountsHandler implements ActionListener {
 		/**
  		Method: actionPerformed
   		Inputs: ActionEvent e
-  		Returns: 
+  		Returns:
 
 		Description: Connects button events to in-class actions
 		*/
@@ -187,12 +212,17 @@ class MainFrame extends JFrame {
 		}
 	}
 
-	// Complete a handler for deposit button
+
+	/**
+	  Class:	DepositHandler
+
+	  Description: button class to deposit money
+	*/
 	class DepositHandler implements ActionListener {
 		/**
  		Method: actionPerformed
   		Inputs: ActionEvent e
-  		Returns: 
+  		Returns:
 
 		Description: Connects button events to in-class actions
 		*/
@@ -204,15 +234,20 @@ class MainFrame extends JFrame {
 				JOptionPane.showMessageDialog(null, "Deposit successful");
 			} else {
 				JOptionPane.showMessageDialog(null, "Deposit unsuccessful");
-			}		
+			}
 		}
 	}
-	// Complete a handler for deposit button
+
+	/**
+	  Class:	WithdrawHandler
+
+	  Description: button class to withdraw money
+	*/
 	class WithdrawHandler implements ActionListener {
 		/**
  		Method: actionPerformed
   		Inputs: ActionEvent e
-  		Returns: 
+  		Returns:
 
 		Description: Connects button events to in-class actions
 		*/
@@ -224,17 +259,17 @@ class MainFrame extends JFrame {
 				JOptionPane.showMessageDialog(null, "Withdrawal successful");
 			} else {
 				JOptionPane.showMessageDialog(null, "Withdrawal unsuccessful");
-			}		
+			}
 		}
 	}
-	
-	//** Complete a handler for the Frame that terminates 
+
+	//** Complete a handler for the Frame that terminates
 	//** (System.exit(1)) on windowClosing event
 
 		/**
  		Method: windowClosing
   		Inputs: windowEvent e
-  		Returns: 
+  		Returns:
 
 		Description: Connects window closing event to closing window.
 		*/

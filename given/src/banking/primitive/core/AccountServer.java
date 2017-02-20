@@ -1,3 +1,10 @@
+/*
+  File:	AccountServer
+  Author:	Paul Horton and Cecilia La Place
+  Date:	2/20/2017
+
+  Description: Interface file for the ServerSolution class
+*/
 package banking.primitive.core;
 
 import java.io.IOException;
@@ -6,8 +13,8 @@ import java.util.List;
 
 /**
   Class:	AccountServer
-  
-  Description: This is an interface file that is used by the ServerSolution class. 
+
+  Description: This is an interface file that is used by the ServerSolution class.
 */
 public interface AccountServer {
 
@@ -41,7 +48,7 @@ public interface AccountServer {
 
 	/**
 	  Method: getAllAccounts
-	  Inputs: 
+	  Inputs:
 	  Returns: List<Account>
 
 	  Description: Returns a list of all Accounts inside the server
@@ -50,7 +57,7 @@ public interface AccountServer {
 
 	/**
 	  Method: getActiveAccounts
-	  Inputs: 
+	  Inputs:
 	  Returns: List<Account>
 
 	  Description: Returns a list of all active Accounts inside the server
@@ -59,7 +66,7 @@ public interface AccountServer {
 
 		/**
 	  Method: saveAccounts
-	  Inputs: 
+	  Inputs:
 	  Returns: IOException
 
 	  Description: Saves the state of the server
