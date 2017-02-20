@@ -19,6 +19,13 @@ class ServerSolution implements AccountServer {
 
 	Map<String,Account> accountMap = null;
 
+	/**
+	  Method: ServerSolution
+	  Inputs: 
+	  Returns: 
+
+	  Description: Constructer to create ServerSolution and create existing accounts from a file
+	*/
 	public ServerSolution() {
 		accountMap = new HashMap<String,Account>();
 		File file = new File(fileName);
@@ -50,6 +57,13 @@ class ServerSolution implements AccountServer {
 		}
 	}
 	
+	/**
+	  Method: newAccountFactory
+	  Inputs: String type, String name, float balance
+	  Returns: boolean
+
+	  Description: Create new account if one of the same name does not exist
+	*/
 	private boolean newAccountFactory(String type, String name, float balance)
 		throws IllegalArgumentException {
 		
@@ -73,6 +87,13 @@ class ServerSolution implements AccountServer {
 		return true;
 	}
 
+	/**
+	  Method: newAccount
+	  Inputs: String type, String name, float balance
+	  Returns: boolean
+
+	  Description: Create new account but first make sure it is has valid fields
+	*/
 	public boolean newAccount(String type, String name, float balance) 
 		throws IllegalArgumentException {
 		
@@ -81,6 +102,13 @@ class ServerSolution implements AccountServer {
 		return newAccountFactory(type, name, balance);
 	}
 	
+	/**
+	  Method: closeAccount
+	  Inputs: String name
+	  Returns: boolean
+
+	  Description: Close specific account when called
+	*/
 	public boolean closeAccount(String name) {
 		Account acc = accountMap.get(name);
 		if (acc == null) {
@@ -90,14 +118,35 @@ class ServerSolution implements AccountServer {
 		return true;
 	}
 
+	/**
+	  Method: getAccount
+	  Inputs: String name
+	  Returns: Account
+
+	  Description: Get specific Account by name
+	*/
 	public Account getAccount(String name) {
 		return accountMap.get(name);
 	}
 
+	/**
+	  Method: getAllAccounts
+	  Inputs: 
+	  Returns: List<Account>
+
+	  Description: Returns list of all accounts
+	*/
 	public List<Account> getAllAccounts() {
 		return new ArrayList<Account>(accountMap.values());
 	}
 
+	/**
+	  Method: getActiveAccounts
+	  Inputs: 
+	  Returns: List<Account>
+
+	  Description: Returns list of all active accounts
+	*/
 	public List<Account> getActiveAccounts() {
 		List<Account> result = new ArrayList<Account>();
 
@@ -109,6 +158,13 @@ class ServerSolution implements AccountServer {
 		return result;
 	}
 	
+	/**
+	  Method: saveAccounts
+	  Inputs: 
+	  Returns: 
+
+	  Description: Saves all accounts to a file
+	*/
 	public void saveAccounts() throws IOException {
 		ObjectOutputStream out = null; 
 		try {
