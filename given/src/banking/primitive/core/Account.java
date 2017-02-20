@@ -10,23 +10,22 @@ package banking.primitive.core;
 public abstract class Account implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
 
-    protected enum State {
+    protected enum STATE {
         OPEN, CLOSED, OVERDRAWN
     };
 
     protected float balance = 0.0F;
     protected String name;
-    private State state;
+    private STATE state;
     /**
       Method:Account
       Inputs:String n
       Returns:
-
       Description:Constructor to create an account with name n
     */
     protected Account(String n) {
         name = n;
-        state = State.OPEN;
+        state = STATE.OPEN;
     }
 
     /**
@@ -93,22 +92,22 @@ public abstract class Account implements java.io.Serializable {
     /**
       Method: getState
       Inputs:
-      Returns: State
+      Returns: state
 
       Description: returns the state of the account
     */
-    protected final State getState() {
+    protected final STATE getState() {
         return state;
     }
 
-    /**
+   /**
       Method: setState
-      Inputs: State s
+      Inputs: STATE s
       Returns:
 
       Description: sets the state of the account
     */
-    protected final void setState(State s) {
+    protected final void setState(STATE s) {
         state = s;
     }
     /**
