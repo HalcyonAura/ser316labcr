@@ -2,7 +2,7 @@
   File:	AccountServerFactory.java
   Author:	Paul Horton and Cecilia La Place
   Date:	2/20/17
-  
+
   Description: This holds the AccountServerFactory class
 */
   package banking.primitive.core;
@@ -10,18 +10,18 @@
 
 public class AccountServerFactory {
 
-	protected static AccountServerFactory singleton = null;
+	protected static AccountServerFactory _singleton = null;
 
-	protected AccountServerFactory() {
+	protected _AccountServerFactory() {
 
 	}
 
 	public static AccountServerFactory getMe() {
-		if (singleton == null) {
-			singleton = new AccountServerFactory();
+		if (_singleton == null) {
+			_singleton = new _AccountServerFactory();
 		}
 
-		return singleton;
+		return _singleton;
 	}
 
 	public AccountServer lookup() {
