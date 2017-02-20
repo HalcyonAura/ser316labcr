@@ -35,7 +35,7 @@ public class AccountServerFactory {
 	*/
 	public static AccountServerFactory getMe() {
 		if (_singleton == null) {
-			_singleton = new _AccountServerFactory();
+			_singleton = new AccountServerFactory();
 		}
 
 		return _singleton;

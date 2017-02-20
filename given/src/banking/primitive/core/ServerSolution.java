@@ -10,10 +10,12 @@ package banking.primitive.core;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import banking.primitive.core.Account.STATE;
+
 import java.util.HashMap;
 import java.io.*;
 
-import banking.primitive.core.Account.State;
 
 /**
   Class:	AccountServer
@@ -22,17 +24,15 @@ import banking.primitive.core.Account.State;
 */
 class ServerSolution implements AccountServer {
 
-	private static String _fileName = "accounts.ser";
-	private Map<String,Account> _accoumtMap = null;
 	/**
 	  Method: ServerSolution
 	  Inputs:
 	  Returns:
 
-	  Description: Constructer to create ServerSolution and create existing accounts from a file
+	  Description: Constructor to create ServerSolution and create existing accounts from a file
 	*/
 	public ServerSolution() {
-		_accoumtMap = new HashMap<String,Account>();
+		_accountMap = new HashMap<String,Account>();
 		File file = new File(_fileName);
 		ObjectInputStream in = null;
 		try {
@@ -45,7 +45,7 @@ class ServerSolution implements AccountServer {
 				for (int i=0; i < size; i++) {
 					Account acc = (Account) in.readObject();
 					if (acc != null)
-						_accoumtMap.put(acc.getName(), acc);
+						_accountMap.put(acc.getName(), acc);
 				}
 			}
 		}
@@ -74,7 +74,7 @@ class ServerSolution implements AccountServer {
 	private boolean _newAccountFactory(String type, String name, float balance)
 		throws IllegalArgumentException {
 
-		if (_accoumtMap.get(name) != null) return false;
+		if (_accountMap.get(name) != null) return false;
 
 		Account acc;
 		if ("Checking".equals(type)) {
@@ -87,7 +87,7 @@ class ServerSolution implements AccountServer {
 			throw new IllegalArgumentException("Bad account type:" + type);
 		}
 		try {
-			_accoumtMap.put(acc.getName(), acc);
+			_accountMap.put(acc.getName(), acc);
 		} catch (Exception exc) {
 			return false;
 		}
@@ -117,11 +117,11 @@ class ServerSolution implements AccountServer {
 	  Description: Close specific account when called
 	*/
 	public boolean closeAccount(String name) {
-		Account acc = _accoumtMap.get(name);
+		Account acc = _accountMap.get(name);
 		if (acc == null) {
 			return false;
 		}
-		acc.setState(STATECLOSED);
+		acc.setState(STATE.CLOSED);
 		return true;
 	}
 
@@ -133,7 +133,7 @@ class ServerSolution implements AccountServer {
 	  Description: Get specific Account by name
 	*/
 	public Account getAccount(String name) {
-		return _accoumtMap.get(name);
+		return _accountMap.get(name);
 	}
 
 	/**
@@ -144,7 +144,7 @@ class ServerSolution implements AccountServer {
 	  Description: Returns list of all accounts
 	*/
 	public List<Account> getAllAccounts() {
-		return new ArrayList<Account>(_accoumtMap.values());
+		return new ArrayList<Account>(_accountMap.values());
 	}
 
 	/**
@@ -156,7 +156,7 @@ class ServerSolution implements AccountServer {
 	*/
 	public List<Account> getActiveAccounts() {
 		List<Account> result = new ArrayList<Account>();
-		for (Account acc : accountMap.values()) {
+		for (Account acc : _accountMap.values()) {
 			if (acc.getState() != STATE.CLOSED) {
 				result.add(acc);
 			}
@@ -176,14 +176,14 @@ class ServerSolution implements AccountServer {
 		try {
 			out = new ObjectOutputStream(new FileOutputStream(_fileName));
 
-			out.writeObject(Integer.valueOf(_accoumtMap.size()));
-			for (String accName : _accoumtMap.keySet()) {
-				out.writeObject(_accoumtMap.get(accName));
+			out.writeObject(Integer.valueOf(_accountMap.size()));
+			for (String accName : _accountMap.keySet()) {
+				out.writeObject(_accountMap.get(accName));
 			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			throw new IOException("Could not write file:" + fileName);
+			throw new IOException("Could not write file:" + _fileName);
 		}
 		finally {
 			if (out != null) {
@@ -207,7 +207,7 @@ class ServerSolution implements AccountServer {
 	private boolean newAccountFactory(String type, String name, float balance)
 		throws IllegalArgumentException {
 
-		if (accountMap.get(name) != null) return false;
+		if (_accountMap.get(name) != null) return false;
 
 		Account acc;
 		if ("Checking".equals(type)) {
@@ -220,13 +220,13 @@ class ServerSolution implements AccountServer {
 			throw new IllegalArgumentException("Bad account type:" + type);
 		}
 		try {
-			accountMap.put(acc.getName(), acc);
+			_accountMap.put(acc.getName(), acc);
 		} catch (Exception exc) {
 			return false;
 		}
 		return true;
 	}
-	static String fileName = "accounts.ser";
-
-	Map<String,Account> accountMap = null;
+	
+	private static String _fileName = "accounts.ser";
+	private Map<String,Account> _accountMap = null;
 }
