@@ -8,6 +8,11 @@
   package banking.primitive.core;
 
 
+	/**
+	  Class:	AccountServerFactory
+
+	  Description: Singleton class to organize server solutions.
+	*/
 public class AccountServerFactory {
 
 	protected static AccountServerFactory _singleton = null;
