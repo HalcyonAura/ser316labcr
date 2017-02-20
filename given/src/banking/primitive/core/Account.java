@@ -7,6 +7,11 @@
 */
 package banking.primitive.core;
 
+/**
+  Class:	Account
+
+  Description: abstract class for accounts (like savings and checking)
+*/
 public abstract class Account implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
 
