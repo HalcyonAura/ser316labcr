@@ -6,14 +6,11 @@ package banking.primitive.core;
   Description: Holds information about checking type Account and ways to change information in it
 */
 public class Checking extends Account {
-
 	private static final long serialVersionUID = 11L;
-	private int numWithdraws = 0;
-
 	/**
 	  Method: Checking
 	  Inputs: String name
-	  Returns: 
+	  Returns:
 
 	  Description: Constructor creates new Checking account when called
 	*/
@@ -24,7 +21,7 @@ public class Checking extends Account {
 	/**
 	  Method: Checking
 	  Inputs: String name, float balance
-	  Returns: 
+	  Returns:
 
 	  Description: Returns instantiated Checking account when called
 	*/
@@ -78,7 +75,7 @@ public class Checking extends Account {
 
 	/**
 	  Method: getType
-	  Inputs: 
+	  Inputs:
 	  Returns: String
 
 	  Description: Returns account type Checking
@@ -87,12 +84,13 @@ public class Checking extends Account {
 
 	/**
 	  Method: toString
-	  Inputs: 
-	  Returns: String 
+	  Inputs:
+	  Returns: String
 
 	  Description: Returns a string representation of the Checking account with the name and balance
 	*/
 	public String toString() {
 		return "Checking: " + getName() + ": " + getBalance();
 	}
+	private int numWithdraws = 0;
 }
