@@ -29,7 +29,7 @@ public abstract class Account implements java.io.Serializable {
 	  Description: returns the balance of the account
 	  */
 	public final float getBalance() {
-	      return balance;
+	      return _balance;
 	}
 	/**
 	Method: getName
@@ -39,7 +39,7 @@ public abstract class Account implements java.io.Serializable {
 	Description: returns the name of the account
 		*/
 	public final String getName() {
-	    return name;
+	    return _name;
 	}
     /**
     Method: getType
@@ -57,7 +57,7 @@ public abstract class Account implements java.io.Serializable {
 	    Description: returns the account in string format.
 	  */
 	  public String toString() {
-	      return "Account " + name + " has $" + balance + "and is " + getState()
+	      return "Account " + _name + " has $" + _balance + "and is " + getState()
 	  + "\n";
 	  }
 	  /**
@@ -77,8 +77,8 @@ public abstract class Account implements java.io.Serializable {
       Description:Constructor to create an account with name n
     */
     protected Account(String n) {
-        name = n;
-        state = STATE.OPEN;
+        _name = n;
+        _state = STATE.OPEN;
     }
 
     /**
@@ -90,7 +90,7 @@ public abstract class Account implements java.io.Serializable {
     */
     protected Account(String n, float b) {
         this(n);
-        balance = b;
+        _balance = b;
     }
 
     /**
@@ -101,7 +101,7 @@ public abstract class Account implements java.io.Serializable {
       Description: returns the state of the account
     */
     protected final STATE getState() {
-        return state;
+        return _state;
     }
 
    /**
@@ -112,16 +112,15 @@ public abstract class Account implements java.io.Serializable {
       Description: sets the state of the account
     */
     protected final void setState(STATE s) {
-        state = s;
+        _state = s;
     }
     
     protected enum STATE {
         OPEN, CLOSED, OVERDRAWN
     };
 
-    private STATE state;
-    protected float balance = 0.0F;
-    protected String name;
-    
+    protected float _balance = 0.0F;
+    protected String _name;
+    private STATE _state;    
     private static final long serialVersionUID = 1L;
 }
