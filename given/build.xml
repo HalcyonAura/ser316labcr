@@ -4,7 +4,7 @@
 	<property name="jars" value="jars"/>
 	<property name="given" value="../lab6given.jar"/>
   <target name="targets">
-      <echo message ="Targets are prepare, compile, build, clean, and given."/>
+      <echo message ="Targets are prepare, compile, build, clean, given, and execute."/>
   </target>
         <path id="compile.classpath">
             <pathelement path="${build}/classes"/>
@@ -31,6 +31,7 @@
 		<delete dir="${build}" />
 		<delete file="${jar}" />
 		<delete file="${given}" />
+		<delete file="./lab6.jar"/>
 	</target>
 
 	<!-- create the given .java files -->
