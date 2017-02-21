@@ -14,9 +14,6 @@
 	  Description: Singleton class to organize server solutions.
 	*/
 public class AccountServerFactory {
-
-	protected static AccountServerFactory _singleton = null;
-
 	/**
 	  Method:AccountServerFactory
 	  Inputs:
@@ -51,4 +48,5 @@ public class AccountServerFactory {
 	public AccountServer lookup() {
 		return new ServerSolution();
 	}
+	protected static AccountServerFactory _singleton = null;
 }
